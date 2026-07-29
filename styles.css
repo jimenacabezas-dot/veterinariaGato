@@ -19,21 +19,24 @@ nav{
 nav ul{
     display: flex;
     gap: 24px;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
     flex-wrap: wrap;
     
 }
 nav li{
-    display:inline;
     margin-right: 15px;
 }
 nav a{
     color: white;
     text-decoration: none;
+    font-weight: bold;
 }
 main{
-    padding: 20;
+    padding: 20px;
 }
 section{
     background: white;
@@ -92,8 +95,9 @@ button:hover{
 }
 .tarjetas{
     display: flex;
-    gap: 20px;
     flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
 }
 
 .tarjeta{
@@ -112,5 +116,9 @@ button:hover{
 @media (max-width: 768px){
     .tarjetas{
         flex-direction: column;
+    }
+    .tarjeta{
+        width: 100%;
+        max-width: 100%;
     }
 }

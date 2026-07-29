@@ -17,9 +17,12 @@ nav{
     padding:10px;
 }
 nav ul{
-    list-style: none;
-    margin: 0;
-    padding: 0;
+    display: flex;
+    gap: 24px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    
 }
 nav li{
     display:inline;
@@ -46,9 +49,10 @@ footer{
 }
 /* Formulario */
 form{
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 10px;
+    background-color:#dff6e9;
+    padding:20px;
+    border-radius:10px;
+    border:2px solid #2f6f5e;
 }
 
 label{
@@ -85,4 +89,28 @@ button{
 
 button:hover{
     background-color: #204f42;
+}
+.tarjetas{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.tarjeta{
+    flex: 1;
+    min-width: 250px;
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.tarjeta h3{
+    color: #2f6f5e;
+}
+
+@media (max-width: 768px){
+    .tarjetas{
+        flex-direction: column;
+    }
 }

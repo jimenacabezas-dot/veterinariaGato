@@ -11,13 +11,18 @@ header{
     color: white;
     padding: 20px;
     text-align: center;
+    position: relative;
 }
 .boton-modo{
-    margin-top: 14px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
     background-color: orange;
     color: black;
     border: none;
-    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
 
 }
 nav{
@@ -150,9 +155,12 @@ body.modo-oscuro footer{
 }
 
 .menu-icon{
-    display: none;
+    position: absolute;
+    top: 20px;
+    left: 20px;
     font-size: 30px;
     cursor: pointer;
+    display: none;
 }
 
 @media (max-width:768px){

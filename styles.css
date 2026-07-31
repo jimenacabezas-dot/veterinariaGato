@@ -13,10 +13,14 @@ header{
     text-align: center;
 }
 .boton-modo{
-    margin-top: 14px;
+     position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
     background-color: orange;
     color: black;
     border: none;
+    cursor: pointer;
     font-family: Arial, Helvetica, sans-serif;
 
 }
@@ -141,4 +145,35 @@ body.modo-oscuro .tarjeta{
 
 body.modo-oscuro footer{
     background:#111;
+}
+ 
+
+
+#menu-toggle{
+    display: none;
+}
+
+.menu-icon{
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+@media (max-width:768px){
+
+    .menu-icon{
+        display: block;
+    }
+
+    nav{
+        display: none;
+    }
+
+    #menu-toggle:checked + .menu-icon + nav{
+        display: block;
+    }
+
+    nav ul{
+        flex-direction: column;
+    }
 }

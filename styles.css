@@ -17,7 +17,7 @@ header{
     position: absolute;
     top: 20px;
     right: 20px;
-    background-color: orange;
+    background-color: #43806f;
     color: black;
     border: none;
     padding: 10px 15px;
@@ -26,7 +26,7 @@ header{
 
 }
 nav{
-    background-color:#204f42;
+    background-color:#2f6f5e;
     padding:10px;
 }
 nav ul{

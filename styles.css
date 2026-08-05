@@ -10,9 +10,9 @@ header{
     background-color: #2f6f5e;
     color: white;
     padding: 20px;
-    text-align: center;
     position: relative;
 }
+/** modo dia modo noche*/
 .boton-modo{
     position: absolute;
     top: 20px;
@@ -122,6 +122,7 @@ button:hover{
     box-sizing: border-box;
     min-width: 100%;
 }
+/** modo oscuro sie s este*/
  body.modo-oscuro{
     background:#1b1b1b;
     color:white;
@@ -180,4 +181,27 @@ body.modo-oscuro footer{
     nav ul{
         flex-direction: column;
     }
+}
+
+/*aviso formulario*/
+.aviso {
+  display: none;
+  margin-top: 14px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.aviso.error {
+  display: block;
+  background-color: #3a1414;
+  color: #ffb4b4;
+  border-left: 4px solid #e05555;
+}
+
+.aviso.exito {
+  display: block;
+  background-color: #14301b;
+  color: #b7f0c4;
+  border-left: 4px solid #3fbf6a;
 }

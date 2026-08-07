@@ -6,8 +6,7 @@
     <link rel="stylesheet" href="styles.css">
     <!--<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>-->
     <title>SisVeterinaria</title>
-    
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
     <header>
@@ -39,6 +38,7 @@
             <h2>Funciones del sistema</h2>
             <div class="tarjetas">
                 <article class="tarjeta">
+                    <i class="fa-solid fa-box-open icono"></i>
                     <h3>Registro de productos</h3>
                     <p>Permite registrar medicamentos, vacunas, alimentos y otros insumos veterinarios.</p>
                     <button type="button" onclick="mostrarFormulario()">
@@ -73,21 +73,27 @@
                 </article>
 
                 <article class="tarjeta">
+                    <i class="fa-solid fa-box icono"></i>
                     <h3>Control de stock</h3>
                     <p>Administra las entradas y salidas de productos y muestra el stock disponible.</p>
                 </article>
 
                 <article class="tarjeta">
-                    <h3>Control de vencimientos</h3>
+                    <div class="icono">
+                        <i class="fa-solid fa-calendar-check icono"></i>
+                    </div>
+                        <h3>Control de vencimientos</h3>
                     <p>Permite conocer qué productos están próximos a vencer o ya vencieron.</p>
                 </article>
 
                 <article class="tarjeta">
+                    <i class="fa-solid fa-chart-column icono"></i>
                     <h3>Reportes</h3>
                     <p>Genera información sobre gastos, movimientos y productos más utilizados.</p>
                 </article>
 
                 <article class="tarjeta">
+                    <i class="fa-solid fa-id-card icono"></i>
                     <h3>Carnet de mascotas</h3>
                     <p>Registra los datos de cada mascota y genera un carnet para su identificación.</p>
                 </article>

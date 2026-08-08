@@ -51,6 +51,42 @@ nav a{
 main{
     padding: 20px;
 }
+/** inicio*/
+.bienvenida{
+    text-align:center;
+    padding:50px 20px;
+}
+
+.bienvenida h2{
+    font-size:35px;
+    color:#2f6f5e;
+    margin-bottom:15px;
+}
+
+.bienvenida .descripcion{
+    font-size:20px;
+    max-width:700px;
+    margin:0 auto 15px;
+}
+
+.botones-inicio{
+    margin-top:25px;
+}
+
+.boton{
+    display:inline-block;
+    background:#2f6f5e;
+    color:white;
+    padding:12px 20px;
+    margin:5px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.boton:hover{
+    background:#204f42;
+}
+/**secion*/
 section{
     background: white;
     margin-bottom: 20px;

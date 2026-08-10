@@ -51,6 +51,23 @@ nav a{
 main{
     padding: 20px;
 }
+/**logo style*/
+.marca{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.marca img{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.marca h1{
+    margin:0;
+}
 /** inicio*/
 .bienvenida{
     text-align:center;

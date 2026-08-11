@@ -6,13 +6,23 @@
     <title>Heladeria Doña Nieve</title>
 </head>
 <body>
+    <header>
     <h1>Heladeria Nieves</h1>
+    <p>nuestra heladeria con muchos sabores... </p>
+    </header>
      <form id="form-helados" method="POST" action="procesar.php" novalidate>
         <label for="pedido">Pedido:</label>
         <textarea id="pedido" name="pedido"></textarea>
 
-        <label for="sabores">Sabores que quiere:</label>
-        <textarea id="sabores" name="sabores"></textarea>
+        <label for="sabores">Sabores</label>
+        <select id="sabores" name="sabores" required>
+            <option value="">Seleccione un sabor</option>
+            <option value="Vainilla">Vainilla</option>
+            <option value="Chocolate">Chocolate</option>
+            <option value="Frutilla">Frutilla</option>
+            <option value="Naranja">Naranja</option>
+            <option value="Menta">Menta</option>
+        </select>
 
         <label for="correo">Correo:</label>
         <input type="email" id="correo" name="correo" required>
@@ -24,5 +34,6 @@
     <footer>
         <p> jimena cabezas soliz11 de agosto 2026 heladeria.</p>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>

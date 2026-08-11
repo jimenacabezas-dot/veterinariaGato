@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heladeria Doña Nieve</title>
+</head>
+<body>
+    <h1>Heladeria Nieves</h1>
+     <form id="form-helados" method="POST" action="procesar.php" novalidate>
+        <label for="pedido">Pedido:</label>
+        <textarea id="pedido" name="pedido"></textarea>
+
+        <label for="sabores">Sabores que quiere:</label>
+        <textarea id="sabores" name="sabores"></textarea>
+
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" name="correo" required>
+        <br><br>
+
+        <button type="submit">Enviar pedido</button>
+        <p id="aviso" class="aviso"></p>
+    </form>
+    <footer>
+        <p> jimena cabezas soliz11 de agosto 2026 heladeria.</p>
+    </footer>
+</body>
+</html>

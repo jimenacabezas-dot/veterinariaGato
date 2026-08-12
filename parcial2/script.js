@@ -10,6 +10,6 @@ formulario.addEventListener("submit", function (event) {
     event.preventDefault();
     aviso.textContent = "Por favor, complete todos los campos si.";
   } else {
-    aviso.textContent = "Enviando pedidos!..";
+    aviso.textContent = "Pedido anotado - te atiende jimena cabezas";
   }
 });

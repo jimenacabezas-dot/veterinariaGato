@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>php-practica</title>
+</head>
+<body>
+    <header>
+    <h1>php-practica</h1>
+    <p>php-practica. </p>
+    </header>
+    <form id="formProducto" method="POST" action="procesar.php">
+
+    <label>Nombre</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label>Categoría</label>
+    <select id="categoria" name="categoria" required>
+        <option value="Medicamento">Medicamento</option>
+        <option value="Vacuna">Vacuna</option>
+        <option value="Alimento">Alimento</option>
+        <option value="Accesorio">Accesorio</option>
+    </select>
+
+    <label>Precio</label>
+    <input type="number" id="precio" name="precio" step="0.01" required>
+
+    <label>Stock</label>
+    <input type="number" id="stock" name="stock" required>
+
+    <button type="submit">Guardar</button>
+
+</form>
+    <footer>
+        <p>16 de agosto 2026 .</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

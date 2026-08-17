@@ -167,7 +167,7 @@ button:hover{
 }
 
 .tarjeta{
-    width: 100%;
+   width: 100%;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -175,7 +175,13 @@ button:hover{
     box-sizing: border-box;
     text-align: center;
 }
-
+/* Celulares */
+@media (max-width: 768px) {
+    .tarjetas {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
 /** modo oscuro sie s este*/
  body.modo-oscuro{
     background:#1b1b1b;

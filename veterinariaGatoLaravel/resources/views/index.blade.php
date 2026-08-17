@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <!--<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>-->
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <title>VPatitasFelices</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
     <header>
         <div class="marca">
-            <img src="img/logo.jpg" alt="Logo Patitas Felices">
+            <img src="{{ asset('img/logo.jpg') }}" alt="Logo">
             <h1>Patitas Felices</h1>
         </div>
         <input type="checkbox" id="menu-toggle">
@@ -21,7 +20,7 @@
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#funciones">Funciones</a></li>
                 <li><a href="#beneficios">Beneficios</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="{{ route('contacto') }}">Contacto</a></li>
             </ul>
         </nav>
         <button type="button" id="btn-tema" class="boton-modo">Modo Día ☀</button>
@@ -59,33 +58,8 @@
                     <i class="fa-solid fa-box-open icono"></i>
                     <h3>Registro de productos</h3>
                     <p>Permite registrar medicamentos, vacunas, alimentos y otros insumos veterinarios.</p>
-                    <button type="button" onclick="mostrarFormulario()">
-                        ➕ Registrar producto
-                    </button>
-                    <div id="formulario" style="display:none;">
-                        <h2>Nuevo producto</h2>
-                       <form id="formProducto" novalidate
-                        method="POST"
-                        action="producto.php">
-                            <label>Nombre del producto</label>
-                            <input type="text" id="nombre" name="nombre" required>
-                            <label>Categoría</label>
-                            <select id="categoria" name="categoria" required>
-                                <option>Medicamento</option>
-                                <option>Vacuna</option>
-                                <option>Alimento</option>
-                                <option>Accesorio</option>
-                            </select>
-                            <label>Precio</label>
-                            <input type="number" id="precio" name="precio" step="0.01" required   oninvalid="this.setCustomValidity('Ingrese un precio válido (solo números).')"
-                            oninput="this.setCustomValidity('')">
-                            <label>Stock</label>
-                            <input name="stock" type="number" id="stock" required oninvalid="this.setCustomValidity('Ingrese una cantidad válida (solo números).')"
-                            oninput="this.setCustomValidity('')">
-                            <button type="submit">Guardar</button>
-                            <p id="mensaje-producto" class="aviso"></p>
-                        </form>
-                    </div>
+                    
+                    <a href="{{ route('productos') }}" class="boton">Ver producto</a>
                 </article>
 
                 <article class="tarjeta">
@@ -110,6 +84,9 @@
                     <i class="fa-solid fa-id-card icono"></i>
                     <h3>Carnet de mascotas</h3>
                     <p>Registra los datos de cada mascota y genera un carnet para su identificación.</p>
+                 <a href="{{ route('mascotas') }}" class="boton">
+                    Ver carnet de mascotas
+                </a>
                 </article>
             </div>
         </section>
@@ -126,17 +103,6 @@
         </section>
         <section id="contacto">
             <h2>Contacto</h2>
-            <form>
-                <label for="">Nombre:</label><br>
-                <input type="text" id="nombre-contacto">
-                <label for="correo">Correo electrónico:</label><br>
-                <input type="email" id="correo" required><br><br>
-
-                <label for="mensaje">Mensaje:</label><br>
-                <textarea id="mensaje" rows="5" cols="40" placeholder="hola"></textarea><br><br>
-
-                <button type="submit">Enviar</button>
-            </form>
             <p><strong>Sistema:</strong> veterinaria</p>
             <p><strong>Correo:</strong> veterinaria@gmail.com</p>
             <p><strong>Teléfono:</strong> 70000000</p>
@@ -145,6 +111,6 @@
     <footer>
         <p>&copy; 2026 Veterinaria. Todos los derechos reservados.</p>
     </footer>
-    <script src="script.js"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>

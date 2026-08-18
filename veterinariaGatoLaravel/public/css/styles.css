@@ -86,9 +86,7 @@ main{
     margin:0 auto 15px;
 }
 
-.botones-inicio{
-    margin-top:25px;
-}
+
 
 .boton{
     display:inline-block;
@@ -277,4 +275,217 @@ body.modo-oscuro footer{
     position: relative;
     left: 2px;
     transform: translateX(2px);
+}
+/* GESTIÓN DE PRODUCTOS*/
+.gestion-productos {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* TÍTULO */
+.titulo-productos {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.titulo-productos h2 {
+    color: #2f6f5e;
+    font-size: 32px;
+    margin-bottom: 8px;
+}
+
+.titulo-productos p {
+    margin: 0;
+}
+
+
+/* RESUMEN */
+
+.resumen-productos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 35px;
+}
+
+.resumen-card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.resumen-card i {
+    font-size: 35px;
+    color: #2f6f5e;
+}
+
+.resumen-card strong {
+    display: block;
+    font-size: 25px;
+    color: #2f6f5e;
+}
+
+.resumen-card span {
+    display: block;
+}
+
+
+/* TÍTULO DE LISTA */
+.titulo-lista {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.titulo-lista h2 {
+    color: #2f6f5e;
+    margin: 0;
+}
+
+/* FORMULARIO */
+
+.formulario-producto {
+    max-width: 700px;
+    margin: 0 auto 30px;
+}
+
+.formulario-producto h3 {
+    color: #2f6f5e;
+    margin-top: 0;
+}
+
+/* SELECT */
+select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* BOTONES DEL FORMULARIO */
+.botones-formulario {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* LISTA */
+.lista-productos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+
+/* TARJETA DE PRODUCTO */
+
+.producto-card {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.producto-icono {
+    width: 60px;
+    height: 60px;
+    background: #dff6e9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.producto-icono i {
+    font-size: 25px;
+    color: #2f6f5e;
+}
+
+.producto-info h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #2f6f5e;
+}
+
+.producto-info p {
+    margin: 5px 0;
+}
+
+
+/* SIN PRODUCTOS */
+
+.sin-productos {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    background: white;
+    border: 1px dashed #aaa;
+    border-radius: 10px;
+}
+
+.sin-productos i {
+    font-size: 50px;
+    color: #2f6f5e;
+}
+
+.sin-productos h3 {
+    margin-bottom: 5px;
+}
+
+
+/* MODO OSCURO */
+
+body.modo-oscuro .resumen-card,
+body.modo-oscuro .producto-card,
+body.modo-oscuro .sin-productos {
+    background: #333;
+    color: white;
+}
+
+body.modo-oscuro .formulario-producto {
+    background: #333;
+    color: white;
+}
+
+
+/* CELULAR */
+
+@media (max-width: 768px) {
+
+    .resumen-productos {
+        grid-template-columns: 1fr;
+    }
+
+    .lista-productos {
+        grid-template-columns: 1fr;
+    }
+
+    .titulo-lista {
+        flex-direction: column;
+        gap: 15px;
+        align-items: stretch;
+    }
+
+    .titulo-lista .boton {
+        text-align: center;
+    }
+
+    .producto-card {
+        flex-direction: column;
+    }
+
 }

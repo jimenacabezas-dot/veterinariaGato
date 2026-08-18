@@ -18,12 +18,18 @@ function alternarModo() {
 
 botonModo.addEventListener("click", alternarModo);
 
-function mostrarFormulario() {
-    const formulario = document.getElementById("formulario");
+function mostrarFormulario(idFormulario, idCampo) {
+
+    const formulario = document.getElementById(idFormulario);
 
     if (formulario.style.display === "none" || formulario.style.display === "") {
+
         formulario.style.display = "block";
+        document.getElementById(idCampo).focus();
+
     } else {
+
         formulario.style.display = "none";
+
     }
 }

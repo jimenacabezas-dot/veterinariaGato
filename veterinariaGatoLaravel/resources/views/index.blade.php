@@ -38,14 +38,7 @@
                         Administra productos, controla el inventario, registra
                         mascotas y organiza la información de forma rápida y sencilla.
                     </p>
-                    <div class="botones-inicio">
-                        <a href="#funciones" class="boton">
-                            🐾 Ver funciones
-                        </a>
-                        <a href="#contacto" class="boton">
-                            📞 Contactarnos
-                        </a>
-                    </div>
+                    
                 </div>
 
             </div>
@@ -59,13 +52,28 @@
                     <h3>Registro de productos</h3>
                     <p>Permite registrar medicamentos, vacunas, alimentos y otros insumos veterinarios.</p>
                     
-                    <a href="{{ route('productos') }}" class="boton">Ver producto</a>
+                    <a href="{{ route('productos') }}" class="boton">Ver productos</a>
                 </article>
-
                 <article class="tarjeta">
                     <i class="fa-solid fa-box icono"></i>
                     <h3>Control de stock</h3>
-                    <p>Administra las entradas y salidas de productos y muestra el stock disponible.</p>
+                    <p>
+                        Consulta el stock disponible de los productos registrados.
+                    </p>
+
+                    <p>
+                        <strong>Productos registrados:</strong>
+                        {{ $productos->count() }}
+                    </p>
+
+                    <p>
+                        <strong>Stock total:</strong>
+                        {{ $productos->sum('stock') }} unidades
+                    </p>
+
+                    <a href="{{ route('productos') }}" class="boton">
+                        Ver stock
+                    </a>
                 </article>
 
                 <article class="tarjeta">
@@ -78,6 +86,14 @@
                     <i class="fa-solid fa-chart-column icono"></i>
                     <h3>Reportes</h3>
                     <p>Genera información sobre gastos, movimientos y productos más utilizados.</p>
+                <a href="" 
+                    class="boton" 
+                    target="_blank">
+
+                        <i class="fa-solid fa-file-pdf"></i>
+                        Ver reporte PDF
+
+</a>
                 </article>
 
                 <article class="tarjeta">

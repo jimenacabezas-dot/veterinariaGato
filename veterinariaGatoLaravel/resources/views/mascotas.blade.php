@@ -26,31 +26,31 @@
             </ul>
         </nav>
     </header>
-
-
     <main>
-
         <section class="seccion-mascotas">
+            <div class="titulo-lista">
+                <h2>
+                    <i class="fa-solid fa-paw"></i>
+                    Mascotas registradas
+                </h2>
 
-            <h2>
-                <i class="fa-solid fa-id-card"></i>
-                Registro de mascotas
-            </h2>
+               <button type="button"
+                    class="boton"
+                        onclick="mostrarFormulario('formularioMascota', 'nombreMascota')">
+                    <i class="fa-solid fa-plus"></i>
+                    Nueva mascota
+                </button>
+            </div>
 
-            <p>
-                Registra los datos de la mascota para generar su carnet
-                de identificación veterinaria.
-            </p>
-
-
-            <!-- FORMULARIO -->
-
-            <div class="tarjeta formulario-mascota">
+            <div class="tarjeta formulario-mascota"
+                id="formularioMascota"
+                style="display: none;">
 
                 <h3>Registrar nueva mascota</h3>
 
-                <form id="formMascota">
-
+                <form id="formMascota" method="POST" 
+                action="{{ route('mascotas.store') }}" >
+                    @csrf
                     <label for="nombreMascota">
                         Nombre de la mascota
                     </label>
@@ -58,15 +58,11 @@
                     <input
                         type="text"
                         id="nombreMascota"
-                        name="nombreMascota"
+                        name="nombre"
                         placeholder="Ej. Max"
                         required
                     >
-
-
-                    <label for="especie">
-                        Especie
-                    </label>
+                    <label for="especie"> Especie </label>
 
                     <select
                         id="especie"
@@ -131,25 +127,25 @@
                     <input
                         type="text"
                         id="nombreDueno"
-                        name="nombreDueno"
+                        name="dueno"
                         placeholder="Ej. Juan Pérez"
                         required
                     >
-
-
                     <label for="telefonoDueno">
                         Teléfono del propietario
                     </label>
 
                     <input
-                        type="tel"
+                         type="text"
                         id="telefonoDueno"
-                        name="telefonoDueno"
+                        name="telefono"
                         placeholder="Ej. 70000000"
                         required
+                        inputmode="numeric"
+                        pattern="[0-9]{8}"
+                        maxlength="8"
+                        
                     >
-
-
                     <button type="submit">
                         <i class="fa-solid fa-plus"></i>
                         Registrar mascota
@@ -162,161 +158,41 @@
 
             <!-- CARNET -->
 
-            <div class="tarjeta carnet-mascota">
+            <h2>Mascotas registradas</h2>
 
-                <h3>
-                    <i class="fa-solid fa-id-card"></i>
-                    Carnet de mascota
-                </h3>
+            <div class="tarjetas">
 
-                <div class="carnet">
+                @forelse($mascotas as $mascota)
 
-                    <div class="carnet-header">
-                        <h2>🐾 SISTEMA VETERINARIA</h2>
-                        <p>Carnet de identificación</p>
-                    </div>
+                    <div class="tarjeta">
 
+                        <i class="fa-solid fa-paw icono"></i>
 
-                    <div class="carnet-contenido">
+                        <h3>{{ $mascota->nombre }}</h3>
 
-                        <div class="foto-mascota">
-                            <i class="fa-solid fa-paw"></i>
-                        </div>
-
-
-                        <div class="datos-mascota">
-
-                            <p>
-                                <strong>Nombre:</strong>
-                                <span id="carnetNombre">
-                                    —
-                                </span>
-                            </p>
-
-                            <p>
-                                <strong>Especie:</strong>
-                                <span id="carnetEspecie">
-                                    —
-                                </span>
-                            </p>
-
-                            <p>
-                                <strong>Raza:</strong>
-                                <span id="carnetRaza">
-                                    —
-                                </span>
-                            </p>
-
-                            <p>
-                                <strong>Edad:</strong>
-                                <span id="carnetEdad">
-                                    —
-                                </span>
-                            </p>
-
-                            <p>
-                                <strong>Sexo:</strong>
-                                <span id="carnetSexo">
-                                    —
-                                </span>
-                            </p>
-
-                            <p>
-                                <strong>Propietario:</strong>
-                                <span id="carnetDueno">
-                                    —
-                                </span>
-                            </p>
-
-                            <p>
-                                <strong>Teléfono:</strong>
-                                <span id="carnetTelefono">
-                                    —
-                                </span>
-                            </p>
-
-                        </div>
+                        <p><strong>Especie:</strong> {{ $mascota->especie }}</p>
+                        <p><strong>Raza:</strong> {{ $mascota->raza }}</p>
+                        <p><strong>Edad:</strong> {{ $mascota->edad }} años</p>
+                        <p><strong>Sexo:</strong> {{ $mascota->sexo }}</p>
+                        <p><strong>Propietario:</strong> {{ $mascota->dueno }}</p>
+                        <p><strong>Teléfono:</strong> {{ $mascota->telefono }}</p>
 
                     </div>
 
+                @empty
 
-                    <div class="carnet-footer">
-                        <p>Documento de identificación veterinaria</p>
-                    </div>
+                    <p>No hay mascotas registradas todavía.</p>
 
-                </div>
-
+                @endforelse
             </div>
-
         </section>
-
     </main>
-
 
     <footer>
         <p>
             &copy; 2026 Sistema Veterinaria
         </p>
     </footer>
-
-
-    <script>
-
-        const formularioMascota =
-            document.querySelector("#formMascota");
-
-
-        formularioMascota.addEventListener("submit", function(event) {
-
-            event.preventDefault();
-
-
-            const nombre =
-                document.querySelector("#nombreMascota").value;
-
-            const especie =
-                document.querySelector("#especie").value;
-
-            const raza =
-                document.querySelector("#raza").value;
-
-            const edad =
-                document.querySelector("#edad").value;
-
-            const sexo =
-                document.querySelector("#sexo").value;
-
-            const dueno =
-                document.querySelector("#nombreDueno").value;
-
-            const telefono =
-                document.querySelector("#telefonoDueno").value;
-
-
-            document.querySelector("#carnetNombre").textContent =
-                nombre;
-
-            document.querySelector("#carnetEspecie").textContent =
-                especie;
-
-            document.querySelector("#carnetRaza").textContent =
-                raza;
-
-            document.querySelector("#carnetEdad").textContent =
-                edad + " años";
-
-            document.querySelector("#carnetSexo").textContent =
-                sexo;
-
-            document.querySelector("#carnetDueno").textContent =
-                dueno;
-
-            document.querySelector("#carnetTelefono").textContent =
-                telefono;
-
-        });
-
-    </script>
-
+        <script src="{{ asset('js/script.js') }}"></script>
 </body>
 </html>

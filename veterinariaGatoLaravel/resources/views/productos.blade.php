@@ -1,55 +1,110 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Productos |VPatitasFelices</title>
-
+    <title>Productos | Patitas Felices</title>
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 </head>
 
 <body>
-
     <header>
-        <h1>🐾 Patitas Felices</h1>
-
+        <div class="marca">
+            <img src="{{ asset('img/logo.jpg') }}" alt="Logo">
+            <h1>Patitas Felices</h1>
+        </div>
         <nav>
             <ul>
                 <li>
                     <a href="{{ url('/') }}">Inicio</a>
                 </li>
-
+                <li>
+                    <a href="{{ route('productos') }}">Productos</a>
+                </li>
+                <li>
+                    <a href="{{ route('mascotas') }}">Mascotas</a>
+                </li>
                 <li>
                     <a href="{{ route('contacto') }}">Contacto</a>
                 </li>
             </ul>
+            <button type="button" id="btn-tema" class="boton-modo">Modo Día ☀</button>
         </nav>
+
     </header>
-
-
     <main>
 
-        <section id="productos">
+        <section class="gestion-productos">
 
-            <h2>
-                <i class="fa-solid fa-box-open"></i>
-                Registro de productos
-            </h2>
+            <div class="titulo-productos">
 
-            <p>
-                Registra los medicamentos, vacunas, alimentos
-                y accesorios utilizados en la veterinaria.
-            </p>
-            <div class="tarjeta">
-                <h3>Nuevo producto</h3>
+                <h2>
+                    <i class="fa-solid fa-box-open"></i>
+                    Gestión de productos
+                </h2>
+                <p>
+                    Administra los productos de la veterinaria
+                    y controla su stock.
+                </p>
+            </div>
+            <!-- RESUMEN -->
+            <div class="resumen-productos">
+                <div class="resumen-card">
+                    <i class="fa-solid fa-box"></i>
+                    <div>
+                        <strong>{{ $productos->count() }}</strong>
+                        <span>Productos</span>
+                    </div>
+                </div>
+                <div class="resumen-card">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <div>
+                        <strong>{{ $productos->pluck('categoria')->unique()->count() }}</strong>
+                        <span>Categorías</span>
+                    </div>
+
+                </div>
+                <div class="resumen-card">
+                    <i class="fa-solid fa-warehouse"></i>
+                    <div>
+                        <strong>{{ $productos->sum('stock') }}</strong>
+                        <span>Unidades en stock</span>
+                    </div>
+                </div>
+            </div>
+            <!-- PRODUCTOS REGISTRADOS -->
+            <div class="titulo-lista">
+                <h2>
+                    <i class="fa-solid fa-list"></i>
+                    Productos registrados
+                </h2>
+                <button type="button"
+                        class="boton"
+                        onclick="mostrarFormulario('formularioProducto', 'nombre')">
+                    <i class="fa-solid fa-plus"></i>
+                    Nuevo producto
+                </button>
+
+            </div>
+            <!-- FORMULARIO -->
+            <div id="formularioProducto"
+                 class="tarjeta formulario-producto"
+                 style="display: none;">
+
+                <h3>
+                    <i class="fa-solid fa-plus"></i>
+                    Registrar nuevo producto
+                </h3>
+
+
                 <div id="formulario" >
-                       <form id="formProducto" novalidate
+                    <form id="formProducto" novalidate
                         method="POST"
-                        action="">
+                        action="{{ route('productos.store') }}">
+                         @csrf
                             <label>Nombre del producto</label>
                             <input type="text" id="nombre" name="nombre" required>
                             <label>Categoría</label>
@@ -70,8 +125,63 @@
                                 Guardar producto
                             </button>
                             <p id="mensaje-producto" class="aviso"></p>
-                        </form>
+                    </form>
+                </div>
+
+            </div>
+
+
+            <!-- LISTA DE PRODUCTOS -->
+
+            <div class="lista-productos">
+
+                @forelse($productos as $producto)
+                    <article class="producto-card">
+                        <div class="producto-icono">
+                            <i class="fa-solid fa-box"></i>
+                        </div>
+                        <div class="producto-info">
+                            <h3>
+                                {{ $producto->nombre }}
+                            </h3>
+                            <p>
+                                <strong>Categoría:</strong>
+                                {{ $producto->categoria }}
+                            </p>
+
+                            <p>
+                                <strong>Precio:</strong>
+                                Bs {{ number_format($producto->precio, 2) }}
+                            </p>
+
+                            <p>
+                                <strong>Stock:</strong>
+                                {{ $producto->stock }} unidades
+                            </p>
+
+                        </div>
+
+                    </article>
+
+                @empty
+
+                    <div class="sin-productos">
+
+                        <i class="fa-solid fa-box-open"></i>
+
+                        <h3>
+                            No hay productos registrados
+                        </h3>
+
+                        <p>
+                            Presiona "Nuevo producto" para registrar
+                            el primer producto.
+                        </p>
+
                     </div>
+
+                @endforelse
+
             </div>
 
         </section>
@@ -79,11 +189,16 @@
     </main>
 
 
+    <!-- FOOTER -->
+
     <footer>
+
         <p>
             &copy; 2026 Sistema Veterinaria
         </p>
-    </footer>
 
+    </footer>
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
+
 </html>

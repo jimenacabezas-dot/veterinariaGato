@@ -16,13 +16,15 @@
 
     <header>
         <h1>🐾 Patitas Felices</h1>
-
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon"> ☰</label>
         <nav>
             <ul>
                 <a href="{{ url('/') }}">Inicio</a>
                 <li>
                     <a href="{{ route('contacto') }}">Contacto</a>
                 </li>
+                <button type="button" id="btn-tema" class="boton-modo">Modo Día ☀</button>
             </ul>
         </nav>
     </header>
@@ -76,12 +78,7 @@
                         <option value="Conejo">Conejo</option>
                         <option value="Otro">Otro</option>
                     </select>
-
-
-                    <label for="raza">
-                        Raza
-                    </label>
-
+                    <label for="raza">Raza</label>
                     <input
                         type="text"
                         id="raza"
@@ -89,12 +86,7 @@
                         placeholder="Ej. Labrador"
                         required
                     >
-
-
-                    <label for="edad">
-                        Edad
-                    </label>
-
+                    <label for="edad">Edad</label>
                     <input
                         type="number"
                         id="edad"
@@ -103,12 +95,7 @@
                         placeholder="Ej. 3"
                         required
                     >
-
-
-                    <label for="sexo">
-                        Sexo
-                    </label>
-
+                    <label for="sexo">Sexo</label>
                     <select
                         id="sexo"
                         name="sexo"
@@ -123,7 +110,6 @@
                     <label for="nombreDueno">
                         Nombre del propietario
                     </label>
-
                     <input
                         type="text"
                         id="nombreDueno"
@@ -134,7 +120,6 @@
                     <label for="telefonoDueno">
                         Teléfono del propietario
                     </label>
-
                     <input
                          type="text"
                         id="telefonoDueno"
@@ -150,35 +135,50 @@
                         <i class="fa-solid fa-plus"></i>
                         Registrar mascota
                     </button>
-
                 </form>
-
             </div>
-
-
-            <!-- CARNET -->
-
+            
             <h2>Mascotas registradas</h2>
 
             <div class="tarjetas">
-
                 @forelse($mascotas as $mascota)
-
                     <div class="tarjeta">
-
                         <i class="fa-solid fa-paw icono"></i>
-
                         <h3>{{ $mascota->nombre }}</h3>
-
                         <p><strong>Especie:</strong> {{ $mascota->especie }}</p>
                         <p><strong>Raza:</strong> {{ $mascota->raza }}</p>
                         <p><strong>Edad:</strong> {{ $mascota->edad }} años</p>
                         <p><strong>Sexo:</strong> {{ $mascota->sexo }}</p>
                         <p><strong>Propietario:</strong> {{ $mascota->dueno }}</p>
                         <p><strong>Teléfono:</strong> {{ $mascota->telefono }}</p>
+                        <div class="botones-mascota">
+                            <!-- Ver carnet -->
+                            <a href="{{ route('mascotas.carnet', $mascota->id) }}" target="_blank">
+                                <button type="button">
+                                    <i class="fa-solid fa-id-card"></i>
+                                    Carnet
+                                </button>
+                            </a>
+                            <!-- Editar -->
+                            <a href="{{ route('mascotas.edit', $mascota->id) }}">
+                                <button type="button">
+                                    <i class="fa-solid fa-pen"></i>
+                                    Editar
+                                </button>
+                            </a>
+                            <!-- Eliminar -->
+                            <form action="{{ route('mascotas.destroy', $mascota->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">
+                                    <i class="fa-solid fa-trash"></i>
+                                    Eliminar
+                                </button>
+                            </form>
 
+                        </div>
                     </div>
-
+                   
                 @empty
 
                     <p>No hay mascotas registradas todavía.</p>

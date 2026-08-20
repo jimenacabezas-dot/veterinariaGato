@@ -59,7 +59,8 @@ class ProductoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $producto = Producto::findOrFail($id);
+        return view('productos.edit', compact('producto'));
     }
 
     /**
@@ -67,7 +68,20 @@ class ProductoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|string|max:255',
+            'categoria' => 'required|string|max:255',
+            'precio' => 'required|numeric|min:0',
+            'stock' => 'required|integer|min:0',
+        ]);
+        $producto = Producto::findOrFail($id);
+        $producto->update([
+            'nombre' => $request->nombre,
+            'categoria' => $request->categoria,
+            'precio' => $request->precio,
+            'stock' => $request->stock,
+        ]);
+        return redirect()->route('productos');
     }
 
     /**

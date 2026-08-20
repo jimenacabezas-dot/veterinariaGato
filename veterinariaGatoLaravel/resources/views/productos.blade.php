@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +15,8 @@
             <img src="{{ asset('img/logo.jpg') }}" alt="Logo">
             <h1>Patitas Felices</h1>
         </div>
+        <input type="checkbox" id="menu-toggle">
+        <label for="menu-toggle" class="menu-icon"> ☰</label>
         <nav>
             <ul>
                 <li>
@@ -158,45 +159,31 @@
                                 <strong>Stock:</strong>
                                 {{ $producto->stock }} unidades
                             </p>
-
+                            <a href="{{ route('productos.edit', $producto->id) }}" class="boton-editar">
+                                <i class="fa-solid fa-pen"></i>
+                                Editar
+                            </a>
                         </div>
-
                     </article>
-
                 @empty
-
                     <div class="sin-productos">
-
                         <i class="fa-solid fa-box-open"></i>
-
                         <h3>
                             No hay productos registrados
                         </h3>
-
                         <p>
                             Presiona "Nuevo producto" para registrar
                             el primer producto.
                         </p>
-
                     </div>
-
                 @endforelse
-
             </div>
-
         </section>
-
     </main>
-
-
-    <!-- FOOTER -->
-
     <footer>
-
         <p>
             &copy; 2026 Sistema Veterinaria
         </p>
-
     </footer>
     <script src="{{ asset('js/script.js') }}"></script>
 </body>

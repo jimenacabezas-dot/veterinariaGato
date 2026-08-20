@@ -86,14 +86,12 @@
                     <i class="fa-solid fa-chart-column icono"></i>
                     <h3>Reportes</h3>
                     <p>Genera información sobre gastos, movimientos y productos más utilizados.</p>
-                <a href="" 
-                    class="boton" 
-                    target="_blank">
-
-                        <i class="fa-solid fa-file-pdf"></i>
-                        Ver reporte PDF
-
-</a>
+                    <a href="{{ route('productos.pdf') }}"
+                        class="boton"
+                        target="_blank">
+                            <i class="fa-solid fa-file-pdf"></i>
+                            Ver reporte PDF
+                    </a>
                 </article>
 
                 <article class="tarjeta">

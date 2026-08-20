@@ -63,7 +63,8 @@ class MascotaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $mascota = Mascota::findOrFail($id);
+        return view('mascotas.edit', compact('mascota'));
     }
 
     /**
@@ -71,7 +72,29 @@ class MascotaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'especie' => 'required',
+            'raza' => 'required',
+            'edad' => 'required|integer',
+            'sexo' => 'required',
+            'dueno' => 'required',
+            'telefono' => 'required',
+        ]);
+
+        $mascota = Mascota::findOrFail($id);
+
+        $mascota->update([
+            'nombre' => $request->nombre,
+            'especie' => $request->especie,
+            'raza' => $request->raza,
+            'edad' => $request->edad,
+            'sexo' => $request->sexo,
+            'dueno' => $request->dueno,
+            'telefono' => $request->telefono,
+        ]);
+
+        return redirect()->route('mascotas');
     }
 
     /**
@@ -79,6 +102,8 @@ class MascotaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $mascota = Mascota::findOrFail($id);
+        $mascota->delete();
+        return redirect()->route('mascotas');
     }
 }
